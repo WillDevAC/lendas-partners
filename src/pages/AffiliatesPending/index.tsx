@@ -10,9 +10,10 @@ import ArrowLeftLineIcon from "@rsuite/icons/ArrowLeftLine";
 import ArrowRightLineIcon from "@rsuite/icons/ArrowRightLine";
 import CardAffiliatePending from "../../components/CardAffiliatePending";
 
-import LayoutFragment from "../../layout/Layout";
+import LayoutFragment from "../../layout";
 
 import api from "../../services/api.service";
+import ProtectedComponent from "../../utils/protected.routes";
 
 interface AffiliateData {
   username: string;
@@ -114,4 +115,4 @@ const AffiliatesPendingPage: React.FC = () => {
   );
 };
 
-export default AffiliatesPendingPage;
+export default ProtectedComponent(AffiliatesPendingPage);

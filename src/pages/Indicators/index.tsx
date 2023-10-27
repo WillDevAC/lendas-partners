@@ -1,7 +1,7 @@
 import React from "react";
 import api from "../../services/api.service";
 
-import LayoutFragment from "../../layout/Layout";
+import LayoutFragment from "../../layout";
 import CardInformation from "../../components/CardInformation";
 import IndicatorsCharts from "../../components/IndicatorsCharts";
 

@@ -1,9 +1,10 @@
 import React from "react";
 
-import LayoutFragment from "../../layout/Layout";
+import LayoutFragment from "../../layout";
 
 import S from "./bot.module.scss";
 import CardBot from "../../components/CardBot";
+import ProtectedComponent from "../../utils/protected.routes";
 
 const BotsPage: React.FC = () => {
   return (
@@ -21,4 +22,4 @@ const BotsPage: React.FC = () => {
   );
 };
 
-export default BotsPage;
+export default ProtectedComponent(BotsPage);

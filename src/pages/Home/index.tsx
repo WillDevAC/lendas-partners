@@ -2,7 +2,7 @@ import React from "react";
 
 import ProtectedRoute from "../../utils/protected.routes";
 import CardInformation from "../../components/CardInformation";
-import LayoutFragment from "../../layout/Layout";
+import LayoutFragment from "../../layout";
 
 import api from "../../services/api.service";
 import S from "./home.module.scss";
