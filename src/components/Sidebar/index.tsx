@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 
 import S from "./Sidebar.module.scss";
 
-import { Avatar, Progress, Tag, TagGroup } from "rsuite";
+import { Avatar, Tag, TagGroup } from "rsuite";
 import { useAuthStore } from "../../store/auth.store";
 
 import SideNavbar from "../SideNavbar";

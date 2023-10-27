@@ -26,8 +26,6 @@ const CardInformation: React.FC<ICardInformation> = ({
   const authStore = useAuthStore();
   const role = authStore.getRole();
 
-  const isCensored = true;
-
   const formatDescription = (description: number, type: string) => {
     if (type === "currency") {
       let valueFormatted = new Intl.NumberFormat("pt-BR", {
