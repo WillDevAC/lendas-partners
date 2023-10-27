@@ -3,7 +3,7 @@ import React from "react";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 
-import S from "./layout.module.scss";
+import S from "../layout/styles.module.scss";
 
 import BreadcrumbComponent from "../components/Breadcrumb";
 
