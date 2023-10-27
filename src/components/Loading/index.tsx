@@ -1,17 +1,11 @@
 import React, { useEffect } from "react";
 
-import Lottie from "react-lottie";
+import Lottie from "lottie-react";
 import animationData from "../../json/loading.json";
 import S from "./loading.module.scss";
 import useLoadingStore from "../../store/loading.store";
 
 const Loading: React.FC = () => {
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-  };
-
   const loadingStore = useLoadingStore();
 
   useEffect(() => {
@@ -20,7 +14,9 @@ const Loading: React.FC = () => {
 
   return loadingStore.loadingState ? (
     <div className={S.loading__container}>
-      <Lottie options={defaultOptions} height={220} width={220} />
+      <div style={{ width: "200px", height: "200px" }}>
+        <Lottie animationData={animationData} />
+      </div>
     </div>
   ) : null;
 };

@@ -10,6 +10,8 @@ type FormData = {
   password: string;
 };
 
+import useLoadingStore from "../../store/loading.store";
+
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { Input, InputGroup } from "rsuite";
 
@@ -18,7 +20,6 @@ import api from "../../services/api.service";
 import { useAuthStore } from "../../store/auth.store";
 import { useNavigate } from "react-router-dom";
 
-import useLoadingStore from "../../store/loading.store";
 import { toast } from "react-toastify";
 
 const AuthPage: React.FC = () => {
@@ -41,19 +42,25 @@ const AuthPage: React.FC = () => {
 
   const onSubmit: SubmitHandler<FormData> = async (FormData) => {
     startLoading();
-    const response = await api.post("/auth/login", FormData);
+    try {
+      const response = await api.post("/auth/login", FormData);
 
-    stopLoading();
-    if (response.status === 201) {
-      navigate("/dashboard", { replace: true });
-      authStore.setToken(response.data.token);
-      authStore.setRole(response.data.user.role);
-      authStore.setId(response.data.user.id);
-      authStore.setName(response.data.user.name);
-      authStore.setAvatar(response.data.user.avatar.url);
-      authStore.setAvatarID(response.data.user.avatar.id);
-    }else {
-      toast.error('Senha ou usuário incorreto.');
+      stopLoading();
+
+      if (response.status === 201) {
+        navigate("/dashboard", { replace: true });
+        authStore.setToken(response.data.token);
+        authStore.setRole(response.data.user.role);
+        authStore.setId(response.data.user.id);
+        authStore.setName(response.data.user.name);
+        authStore.setAvatar(response.data.user.avatar.url);
+        authStore.setAvatarID(response.data.user.avatar.id);
+      } else {
+        toast.error("Senha ou usuário incorreto.");
+      }
+    } catch (error) {
+      toast.error("Senha ou usuário incorreto.");
+      stopLoading();
     }
   };
 
