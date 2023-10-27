@@ -1,0 +1,59 @@
+@import '../../styles/variables.scss';
+
+.affiliates__pending__container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.affiliates__pending__paginate {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin-bottom: 2rem;
+}
+
+.affiliates__pending__arrows {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 3rem;
+
+  .affiliates__pending__prev {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.3rem;
+    border-radius: 0.3rem;
+    width: 1.7rem;
+    border: 1px solid $border;
+    font-size: 1.3rem;
+    background-color: transparent;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $secondary;
+    }
+  }
+
+  .affiliates__pending__next {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.3rem;
+    border-radius: 0.3rem;
+    width: 1.7rem;
+    border: 1px solid $border;
+    font-size: 1.3rem;
+    background-color: transparent;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $secondary;
+    }
+  }
+}

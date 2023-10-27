@@ -1,0 +1,12 @@
+.bot__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
+  grid-gap: 1rem;
+  padding: 1rem;
+  border-radius: 0.3rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}

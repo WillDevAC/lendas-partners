@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800&family=Nunito:wght@300;400;500;600;700&display=swap");
+@import "./variables.scss";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: $background;
+  color: white;
+  position: relative;
+}
+
+/* @custom CSS */
+.rs-sidenav-item-active {
+  color: $primary !important;
+}
+
+.rs-sidenav-default .rs-dropdown-item.rs-dropdown-item-active,
+.rs-sidenav-default
+  .rs-dropdown.rs-dropdown-selected-within
+  .rs-sidenav-item-icon,
+.rs-sidenav-default .rs-sidenav-item.rs-sidenav-item-active {
+  color: $primary !important;
+}
+
+.rs-input-group:focus-within,
+.rs-input-group:not(.rs-input-group-disabled).rs-input-group-focus,
+.rs-input-group:not(.rs-input-group-disabled):hover {
+  border-color: $primary !important;
+}
+
+.rs-input:focus,
+.rs-input:hover:not(:disabled) {
+  border-color: $primary !important;
+}
+
+.rs-picker-default:not(.rs-picker-disabled) .rs-btn-active,
+.rs-picker-default:not(.rs-picker-disabled) .rs-btn:focus,
+.rs-picker-default:not(.rs-picker-disabled) .rs-btn:hover,
+.rs-picker-default:not(.rs-picker-disabled) .rs-picker-toggle-active,
+.rs-picker-default:not(.rs-picker-disabled) .rs-picker-toggle:focus,
+.rs-picker-default:not(.rs-picker-disabled) .rs-picker-toggle:hover {
+  border-color: $primary !important;
+}
+
+.rs-calendar-time-dropdown-cell.rs-calendar-time-dropdown-cell-active {
+  background-color: $primary !important;
+  color: #fff;
+}
+
+li {
+  list-style-type: none;
+}
+
+.rodal-dialog {
+  width: 35rem !important;
+  height: auto !important;
+  max-height: 13rem;
+  background-color: $background !important;
+  border-radius: 0.3rem;
+
+  @media screen and (max-width: 900px) {
+    width: 23rem !important;
+    height: 41rem !important;
+    overflow-y: scroll;
+  }
+}
+
+.no-scroll {
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+/* ===== Scrollbar ===== */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #03b169;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #03b169;
+  border-radius: 10px;
+}

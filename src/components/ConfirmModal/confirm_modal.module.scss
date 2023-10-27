@@ -1,0 +1,48 @@
+.custom_modal {
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+}
+
+.modal_content {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+
+  @media screen and (max-width: 900px) {
+    padding: 0.5rem;
+  }
+}
+
+.modal__actions{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 0.3rem;
+  }
+
+  button:nth-child(1) {
+    background-color: #156732;
+
+    &:hover {
+      background-color: #14592c;
+    }
+  }
+
+  button:nth-child(2) {
+    background-color: #671515;
+
+    &:hover {
+      background-color: #521313;
+    }
+  }
+}

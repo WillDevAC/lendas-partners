@@ -1,0 +1,108 @@
+@import "../../styles/variables.scss";
+
+.auth__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  background-color: #0f131a;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+  
+  .auth__branding {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .auth__branding__wrapper {
+      display: flex;
+      flex-direction: column;
+      width: 80%;
+      height: auto;
+      gap: 0.5rem;
+
+      h1 {
+        font-size: 3rem;
+        color: $primary;
+      }
+
+      span {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .auth__form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .auth__form__wrapper {
+      display: flex;
+      flex-direction: column;
+      border-radius: 0.4rem;
+      min-width: 480px;
+      height: 55%;
+      border: 1px solid $border;
+      padding: 3rem;
+
+      @media (max-width: 768px) {
+        min-width: 100%;
+        background-color: $background;
+        min-height: 450px;
+      }
+
+    }
+  }
+}
+
+.form__wrapper__title {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  span {
+    b {
+      color: $primary;
+    }
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  flex: 1;
+  margin-top: 2rem;
+}
+
+.auth__form__action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+
+  button {
+    background-color: #3c3f43;
+    border-radius: 0.3rem;
+    height: 3rem;
+    width: 100%;
+
+    &:hover {
+      background-color: $primary;
+    }
+  }
+}
+
+.form__warn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+}
