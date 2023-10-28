@@ -16,7 +16,7 @@ const BreadcrumbComponent: React.FC = () => {
         <Breadcrumb.Item active>Página principal /</Breadcrumb.Item>
       ) : (
         <Breadcrumb.Item>
-          <Link to="/">Página principal</Link>
+          <Link to="/dashboard">Página principal</Link>
         </Breadcrumb.Item>
       )}
       {segments.map((segment, index) => (
