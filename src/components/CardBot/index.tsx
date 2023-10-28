@@ -144,57 +144,61 @@ const CardBot: React.FC<ICardBotProps> = ({ image, name, status }) => {
       .then((response) => {
         if (response.data && response.data.length > 0) {
           const data = response.data;
-
+  
           const doc = new jsPDF();
-
-          doc.setFontSize(18);
-          doc.text(`Relatório de grupos: LENDAS ${botName}`, 10, 10);
-
-          let yPosition = 30;
-
+  
+          const itemsPerPage = 5;
+          let currentPage = 1;
+          let yPosition = 20;
+  
+          const generateHeader = () => {
+            doc.setFontSize(18);
+            doc.text(`Relatório de grupos: LENDAS ${botName} - Página ${currentPage}`, 10, 10);
+          };
+  
+          const addNewPage = () => {
+            doc.addPage();
+            currentPage++;
+            yPosition = 20;
+            generateHeader();
+          };
+  
+          generateHeader();
+  
           for (let i = 0; i < data.length; i++) {
+            if (i % itemsPerPage === 0 && i !== 0) {
+              addNewPage();
+            }
+  
             const item = data[i];
-
+  
             doc.setFontSize(12);
-            doc.text(`Grupo de afiliados ${item.bot_name}`, 10, yPosition);
-            doc.text("ID: " + item.id, 10, yPosition + 10);
-            doc.text("Nome do Bot: " + item.bot_name, 10, yPosition + 20);
-            doc.text("ID do Grupo: " + item.id_group, 10, yPosition + 30);
-            doc.text(
-              "Nome do Afiliado: " + item.name_affiliate,
-              10,
-              yPosition + 40
-            );
-            doc.text(
-              "Link de Afiliado: " + item.link_affiliate,
-              10,
-              yPosition + 50
-            );
-            doc.text(
-              "Hora de Início de Envio: " + item.start_send,
-              10,
-              yPosition + 60
-            );
-            doc.text(
-              "Hora de Fim de Envio: " + item.finish_send,
-              10,
-              yPosition + 70
-            );
-
-            yPosition += 80;
-
+            doc.text("ID: " + item.id, 10, yPosition);
+            yPosition += 10;
+            doc.text("ID do Grupo: " + item.id_group, 10, yPosition);
+            yPosition += 10;
+            doc.text("Nome do Afiliado: " + item.name_affiliate, 10, yPosition);
+            yPosition += 10;
+            doc.text("Link de Afiliado: " + item.link_affiliate, 10, yPosition);
+            yPosition += 10;
+            doc.text("Hora de Início de Envio: " + item.start_send, 10, yPosition);
+            yPosition += 10;
+            doc.text("Hora de Fim de Envio: " + item.finish_send, 10, yPosition);
+            yPosition += 20;
+  
             if (i < data.length - 1) {
               doc.line(10, yPosition, 200, yPosition);
               yPosition += 10;
             }
           }
-
+  
           doc.save("relatorio.pdf");
         } else {
           toast.info("Não há grupos cadastrados.");
         }
       });
   };
+  
 
   return (
     <div className={S.bot__card}>
@@ -208,23 +212,19 @@ const CardBot: React.FC<ICardBotProps> = ({ image, name, status }) => {
         </div>
         <div className={S.bot__information__group}>
           <p>STATUS</p>
-          { status === 'ONLINE' && (
-            <span>{status}</span>
-          )}
-          { status === 'OFFLINE' && (
-            <span className={S.offline}>{status}</span>
-          )}
+          {status === "ONLINE" && <span>{status}</span>}
+          {status === "OFFLINE" && <span className={S.offline}>{status}</span>}
         </div>
         <div className={S.bot__actions__group}>
           <IconButton
             icon={<PlusIcon />}
             onClick={() => {
-              if(status === 'OFFLINE') {
-                toast.warn('Grupo em manuntenção.');
-                return
+              if (status === "OFFLINE") {
+                toast.warn("Grupo em manuntenção.");
+                return;
               }
 
-              openDrawer("Adicionar")
+              openDrawer("Adicionar");
             }}
             appearance="primary"
             color="green"
@@ -234,12 +234,12 @@ const CardBot: React.FC<ICardBotProps> = ({ image, name, status }) => {
           <IconButton
             icon={<CloseIcon />}
             onClick={() => {
-              if(status === 'OFFLINE') {
-                toast.warn('Grupo em manuntenção.');
+              if (status === "OFFLINE") {
+                toast.warn("Grupo em manuntenção.");
                 return;
               }
 
-              openDrawer("Remover")
+              openDrawer("Remover");
             }}
             appearance="primary"
             color="red"
@@ -251,12 +251,12 @@ const CardBot: React.FC<ICardBotProps> = ({ image, name, status }) => {
             appearance="primary"
             color="violet"
             onClick={() => {
-              if(status === 'OFFLINE') {
-                toast.warn('grupo em manuntenção.');
+              if (status === "OFFLINE") {
+                toast.warn("grupo em manuntenção.");
                 return;
               }
 
-              generateReport(name)
+              generateReport(name);
             }}
           >
             Gerar relatório
