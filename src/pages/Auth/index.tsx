@@ -59,7 +59,6 @@ const AuthPage: React.FC = () => {
         toast.error("Senha ou usuário incorreto.");
       }
     } catch (error) {
-      toast.error("Senha ou usuário incorreto.");
       stopLoading();
     }
   };
