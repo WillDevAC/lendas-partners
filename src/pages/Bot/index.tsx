@@ -10,7 +10,7 @@ const BotsPage: React.FC = () => {
   return (
     <LayoutFragment panelActive="3-3" pageName="Grupo de sinais" openKey="3">
       <div className={S.bot__container}>
-        <CardBot image="../../aviator.jpeg" name="AVIATOR" status="OFFLINE"/>
+        <CardBot image="../../studio.png" name="FUTEBOL STUDIO" status="ONLINE"/>
         <CardBot image="../../mines.jpeg" name="MINES" status="ONLINE"/>
         <CardBot image="../../spaceman.jpeg" name="SPACEMAN" status="ONLINE"/>
         <CardBot image="../../fortunetiger.jpeg" name="FORTUNE TIGER" status="ONLINE"/>
